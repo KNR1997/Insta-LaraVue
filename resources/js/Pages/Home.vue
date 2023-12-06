@@ -4,7 +4,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 
 import LikesSection from '@/Components/LikesSection.vue'
-// import ShowPostOverlay from '@/Components/ShowPostOverlay.vue'
+import ShowPostOverlay from '@/Components/ShowPostOverlay.vue'
 
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
@@ -145,6 +145,7 @@ onMounted(() => {
                     this is some text here
                 </div>
                 <button
+                    @click="$event => openOverlay = true"
                     class="text-gray-500 font-extrabold py-1"
                 >
                     View all 4 comments
@@ -155,7 +156,7 @@ onMounted(() => {
         </div>
     </MainLayout>
 
-    <!-- <ShowPostOverlay
+    <ShowPostOverlay
         v-if="openOverlay"
         :post="currentPost"
         @addComment="addComment($event)"
@@ -164,7 +165,7 @@ onMounted(() => {
             deleteFunc($event);
         "
         @closeOverlay="openOverlay = false"
-    /> -->
+    />
 </template>
 
 <style>
